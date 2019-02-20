@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using Skoruba.IdentityServer4.Admin.BusinessLogic.Extensions;
 using Skoruba.IdentityServer4.Admin.BusinessLogic.Identity.Dtos.Identity;
 using Skoruba.IdentityServer4.Admin.BusinessLogic.Identity.Extensions;
@@ -57,6 +58,8 @@ namespace Skoruba.IdentityServer4.Admin
 
             services.AddMvcLocalization();
             services.AddAuthorizationPolicies();
+
+            IdentityModelEventSource.ShowPII = true; //To show detail of error and see the problem
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
